@@ -1,0 +1,258 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Modern Tech Portfolio Design System - Multi-colored theme 
+All colors MUST be HSL for proper theme support.
+*/
+
+@layer base {
+  :root {
+    /* Base colors - Dark tech theme */
+    --background: 220 27% 8%;
+    --foreground: 220 15% 95%;
+
+    /* Card colors with subtle transparency */
+    --card: 220 20% 12%;
+    --card-foreground: 220 15% 95%;
+
+    /* Popover colors */
+    --popover: 220 25% 10%;
+    --popover-foreground: 220 15% 95%;
+
+    /* Primary - Deep tech blue */
+    --primary: 235 85% 65%;
+    --primary-foreground: 220 15% 5%;
+    --primary-glow: 235 85% 75%;
+
+    /* Secondary - Vibrant purple */
+    --secondary: 270 75% 65%;
+    --secondary-foreground: 220 15% 95%;
+
+    /* Muted colors */
+    --muted: 220 15% 18%;
+    --muted-foreground: 220 10% 65%;
+
+    /* Accent - Electric green */
+    --accent: 145 85% 55%;
+    --accent-foreground: 220 15% 5%;
+
+    /* Destructive colors */
+    --destructive: 0 75% 65%;
+    --destructive-foreground: 220 15% 95%;
+
+    /* Border and input */
+    --border: 220 15% 25%;
+    --input: 220 15% 18%;
+    --ring: 235 85% 65%;
+
+    --radius: 0.5rem;
+
+    /* Custom gradients for modern tech aesthetic */
+    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)));
+    --gradient-secondary: linear-gradient(135deg, hsl(var(--secondary)), hsl(var(--accent)));
+    --gradient-tech: linear-gradient(45deg, hsl(var(--primary)), hsl(var(--secondary)), hsl(var(--accent)));
+    --gradient-card: linear-gradient(145deg, hsl(var(--card)), hsl(220 20% 15%));
+    
+    /* Shadows with tech glow effects */
+    --shadow-glow: 0 0 40px hsl(var(--primary) / 0.3);
+    --shadow-card: 0 8px 32px hsl(220 27% 4% / 0.8);
+    --shadow-hover: 0 12px 40px hsl(var(--primary) / 0.4);
+    
+    /* Animation timing */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    background-image: 
+      radial-gradient(circle at 20% 80%, hsl(var(--primary) / 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, hsl(var(--secondary) / 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 40% 40%, hsl(var(--accent) / 0.05) 0%, transparent 50%);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  /* Tech-inspired button variants */
+  .btn-hero {
+    @apply bg-gradient-to-r from-primary to-primary-glow text-primary-foreground;
+    @apply px-8 py-4 rounded-lg font-semibold;
+    @apply transition-all duration-300 hover:scale-105;
+    @apply shadow-lg hover:shadow-glow;
+  }
+  
+  .btn-ghost {
+    @apply border border-primary/30 text-primary bg-transparent;
+    @apply px-6 py-3 rounded-lg font-medium;
+    @apply transition-all duration-300 hover:bg-primary/10 hover:border-primary;
+  }
+
+  /* Card components with tech aesthetics */
+  .card-tech {
+    @apply bg-gradient-to-br from-card to-card/80;
+    @apply border border-border/50 rounded-xl;
+    @apply shadow-card backdrop-blur-sm;
+    @apply transition-all duration-300 hover:shadow-hover hover:scale-[1.02];
+  }
+
+  .card-service {
+    @apply card-tech p-6;
+    @apply hover:bg-gradient-to-br hover:from-primary/5 hover:to-accent/5;
+  }
+
+  .card-project {
+    @apply card-tech overflow-hidden cursor-pointer;
+  }
+
+  /* Gradient text effects */
+  .text-gradient {
+    @apply bg-gradient-to-r from-primary via-secondary to-accent;
+    @apply bg-clip-text text-transparent;
+  }
+
+  .text-hero {
+    @apply text-5xl md:text-7xl font-bold;
+    @apply bg-gradient-to-r from-primary via-secondary to-accent;
+    @apply bg-clip-text text-transparent;
+  }
+
+  /* Animated elements */
+  .float-animation {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .glow-effect {
+    @apply shadow-glow;
+    animation: glow 2s ease-in-out infinite alternate;
+  }
+
+  /* Navigation styles */
+  .nav-link {
+    @apply relative px-4 py-2 text-foreground/80 hover:text-foreground;
+    @apply transition-colors duration-300;
+  }
+
+  .nav-link::after {
+    @apply absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-primary to-accent;
+    @apply transition-all duration-300;
+    content: '';
+  }
+
+  .nav-link:hover::after,
+  .nav-link.active::after {
+    @apply w-full;
+  }
+
+  /* Skill badge styles */
+  .skill-badge {
+    @apply inline-flex items-center gap-2 px-4 py-2;
+    @apply bg-gradient-to-r from-muted to-muted/80;
+    @apply border border-border/50 rounded-full;
+    @apply text-sm font-medium;
+    @apply transition-all duration-300 hover:scale-105;
+    @apply hover:bg-gradient-to-r hover:from-primary/10 hover:to-accent/10;
+  }
+}
+
+@layer utilities {
+  /* Animation keyframes */
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+  }
+
+  @keyframes glow {
+    from { box-shadow: 0 0 20px hsl(var(--primary) / 0.3); }
+    to { box-shadow: 0 0 40px hsl(var(--primary) / 0.6); }
+  }
+
+  @keyframes slideInUp {
+    from { 
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  /* Utility classes */
+  .animate-slide-up {
+    animation: slideInUp 0.6s ease-out;
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 0.8s ease-out;
+  }
+}
